@@ -17,13 +17,54 @@
         ცხოვრებაში
       </p>
     </div>
-    <div class="card">
-      <input type="text" placeholder="ელფოსტა ან ტელეფონის ნომერი" />
-      <input type="password" placeholder="პაროლი" />
-      <button>შესვლა</button>
-      <div class="line"></div>
-      <button class="greenBtn">ახალი ანგარიშის შექმნა</button>
+    <div class="container">
+      <form id="signIn" class="login">
+        <input type="text" placeholder="ელფოსტა ან ტელეფონის ნომერი" />
+        <input type="password" placeholder="პაროლი" />
+        <div class="error"></div>
+        <button type="submit">შესვლა</button>
+        <div class="line"></div>
+        <button id="signUpPage-btn" type="submit" class="greenBtn">
+          ახალი ანგარიშის შექმნა
+        </button>
+      </form>
+
+      <form id="signUp" class="signup hidden">
+        <div class="input-control">
+          <input id="name" type="text" placeholder="სახელი" />
+          <div class="error"></div>
+        </div>
+        <div class="input-control">
+          <input id="lastName" type="text" placeholder="გვარი" />
+          <div class="error"></div>
+        </div>
+        <div class="input-control">
+          <input
+            id="email"
+            type="text"
+            placeholder="ელფოსტა ან ტელეფონის ნომერი"
+          />
+          <div class="error"></div>
+        </div>
+        <div class="input-control">
+          <input id="password" type="password" placeholder="პაროლი" />
+          <div class="error"></div>
+        </div>
+        <div class="input-control">
+          <input
+            id="rePassword"
+            type="password"
+            placeholder="გაიმეორეთ პაროლი"
+          />
+          <div class="error"></div>
+        </div>
+        <button type="submit">ახალი ანგარიშის შექმნა</button>
+        <div class="line"></div>
+        <button id="signInPage-btn" type="submit" class="greenBtn">
+          შესვლა
+        </button>
+      </form>
     </div>
-    <script src="./script.js"></script>
+    <script defer src="./script.js"></script>
   </body>
 </html>

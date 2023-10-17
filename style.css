@@ -15,7 +15,7 @@ body {
   background-color: rgb(231, 231, 231);
 }
 
-.card {
+.login {
   background-color: white;
   width: 400px;
   height: 300px;
@@ -24,6 +24,20 @@ body {
   padding: 30px;
   border-radius: 7px;
   box-shadow: 0px 0px 15px 0px #0000001a;
+}
+
+.signup {
+  background-color: white;
+  width: 400px;
+  height: 500px;
+  display: grid;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 15px 0px #0000001a;
+}
+.hidden {
+  display: none;
 }
 
 img {
@@ -71,4 +85,21 @@ button {
 button:hover {
   opacity: 50%;
   transition: 0.2s;
+}
+
+.input-error {
+  border: 2px solid red;
+}
+
+.input-success {
+  border: 2px solid rgb(17, 195, 17);
+}
+
+input:focus {
+  outline: 0;
+}
+
+.error {
+  color: red;
+  font-size: 10px;
 }
