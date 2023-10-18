@@ -9,13 +9,28 @@ const userEmail = document.getElementById("email");
 const userPassword = document.getElementById("password");
 const userRePassword = document.getElementById("rePassword");
 
+const signInEmail = document.getElementById("signInEmail");
+const signInPassword = document.getElementById("signInPassword");
+
+const logInBtn = document.getElementById("logInBtn");
+const signUpBtn = document.getElementById("signUpBtn");
+
+let userArray = JSON.parse(localStorage.getItem("userArray")) || [];
+
 signIn.addEventListener("submit", (e) => {
   e.preventDefault();
 });
+
 signUp.addEventListener("submit", (e) => {
   e.preventDefault();
+});
 
-  validateInputs();
+logInBtn.addEventListener("click", () => {
+  validateSignInInputs();
+});
+
+signUpBtn.addEventListener("click", () => {
+  validateSignUpInputs();
 });
 
 function pageChange() {
@@ -30,7 +45,7 @@ function pageChange() {
 }
 pageChange();
 
-function validateInputs() {
+function validateSignUpInputs() {
   const nameValue = userName.value.trim();
   const lastNameValue = userLastName.value.trim();
   const emailValue = userEmail.value.trim();
@@ -71,6 +86,34 @@ function validateInputs() {
     setError(userRePassword, "*Password does not match");
   } else {
     setSuccess(userRePassword);
+    storeToLocalStorage(emailValue, passwordValue);
+  }
+}
+
+function validateSignInInputs() {
+  const signInEmailValue = signInEmail.value.trim();
+  const signInPasswordValue = signInPassword.value.trim();
+
+  userArray.forEach((el) => {
+    if (!el.newUserEmail.includes(signInEmailValue)) {
+      setError(signInEmail, "*User does not exist");
+    } else {
+      setSuccess(signInEmail);
+    }
+  });
+
+  if (signInEmailValue === "") {
+    setError(signInEmail, "*Email is required");
+  } else if (!isValidEmail(signInEmailValue)) {
+    setError(signInEmail, "*Proveide valid email");
+  } else {
+    setSuccess(signInEmail);
+  }
+
+  if (signInPasswordValue === "") {
+    setError(signInPassword, "*Password is required");
+  } else {
+    setSuccess(signInPassword);
   }
 }
 
@@ -95,5 +138,18 @@ function setSuccess(input) {
 const isValidEmail = (email) => {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+  return re.test(email);
 };
+
+function storeToLocalStorage(email, password) {
+  let newUser = {
+    newUserEmail: email,
+    newUserPassword: password,
+  };
+  userArray.push(newUser);
+
+  localStorage.setItem("userArray", JSON.stringify(userArray));
+
+  console.log(userArray);
+}
+console.log(userArray);

@@ -19,10 +19,19 @@
     </div>
     <div class="container">
       <form id="signIn" class="login">
-        <input type="text" placeholder="ელფოსტა ან ტელეფონის ნომერი" />
-        <input type="password" placeholder="პაროლი" />
-        <div class="error"></div>
-        <button type="submit">შესვლა</button>
+        <div class="input-control">
+          <input
+            id="signInEmail"
+            type="text"
+            placeholder="ელფოსტა ან ტელეფონის ნომერი"
+          />
+          <div class="error"></div>
+        </div>
+        <div class="input-control">
+          <input id="signInPassword" type="password" placeholder="პაროლი" />
+          <div class="error"></div>
+        </div>
+        <button id="logInBtn" type="submit">შესვლა</button>
         <div class="line"></div>
         <button id="signUpPage-btn" type="submit" class="greenBtn">
           ახალი ანგარიშის შექმნა
@@ -58,7 +67,7 @@
           />
           <div class="error"></div>
         </div>
-        <button type="submit">ახალი ანგარიშის შექმნა</button>
+        <button id="signUpBtn" type="submit">ახალი ანგარიშის შექმნა</button>
         <div class="line"></div>
         <button id="signInPage-btn" type="submit" class="greenBtn">
           შესვლა
