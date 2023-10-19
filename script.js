@@ -52,41 +52,65 @@ function validateSignUpInputs() {
   const passwordValue = userPassword.value.trim();
   const rePasswordValue = userRePassword.value.trim();
 
+  let userExists = false;
+  let valid = true;
+
+  userArray.forEach((user) => {
+    if (user.newUserEmail === emailValue) {
+      userExists = true;
+    }
+  });
+
   if (nameValue === "") {
     setError(userName, "*Name is required");
+    valid = false;
   } else {
     setSuccess(userName);
   }
   if (lastNameValue === "") {
     setError(userLastName, "*Lastname is required");
+    valid = false;
   } else {
     setSuccess(userLastName);
   }
   if (emailValue === "") {
     setError(userEmail, "*Email is required");
+    valid = false;
   } else if (!isValidEmail(emailValue)) {
     setError(userEmail, "*Proveide valid email");
+    valid = false;
+  } else if (userExists) {
+    setError(userEmail, "*User already exists");
+    valid = false;
   } else {
     setSuccess(userEmail);
   }
 
   if (passwordValue === "") {
     setError(userPassword, "*Password is required");
+    valid = false;
   } else if (passwordValue.length < 8) {
     setError(userPassword, "*Password must include more then 8 charachters");
+    valid = false;
   } else if (passwordValue.length > 22) {
     setError(userPassword, "*Password must include less then 22 charachters");
+    valid = false;
   } else {
     setSuccess(userPassword);
   }
 
   if (rePasswordValue === "") {
     setError(userRePassword, "*Please confirm password");
+    valid = false;
   } else if (rePasswordValue !== passwordValue) {
     setError(userRePassword, "*Password does not match");
+    valid = false;
   } else {
     setSuccess(userRePassword);
+  }
+  if (valid) {
     storeToLocalStorage(emailValue, passwordValue);
+    window.location.reload();
   }
 }
 
@@ -94,26 +118,37 @@ function validateSignInInputs() {
   const signInEmailValue = signInEmail.value.trim();
   const signInPasswordValue = signInPassword.value.trim();
 
-  userArray.forEach((el) => {
-    if (!el.newUserEmail.includes(signInEmailValue)) {
-      setError(signInEmail, "*User does not exist");
-    } else {
-      setSuccess(signInEmail);
+  let userExists = false;
+
+  userArray.forEach((user) => {
+    if (
+      user.newUserEmail === signInEmailValue &&
+      user.newUserPassword === signInPasswordValue
+    ) {
+      // User with provided email and password found in local storage
+      userExists = true;
+      window.location.href = "./newsFeed/newsFeed.html";
+      // You can perform additional actions here, such as redirecting the user to another page
+      // or setting a flag to indicate successful login
     }
   });
 
-  if (signInEmailValue === "") {
-    setError(signInEmail, "*Email is required");
-  } else if (!isValidEmail(signInEmailValue)) {
+  if (!isValidEmail(signInEmailValue)) {
     setError(signInEmail, "*Proveide valid email");
+  } else if (!userExists) {
+    setError(signInEmail, "*Invalid email or password");
+    setError(signInPassword, "");
   } else {
     setSuccess(signInEmail);
+    // Perform actions for successful login, such as redirecting the user
+  }
+
+  if (signInEmailValue === "") {
+    setError(signInEmail, "*Email is required");
   }
 
   if (signInPasswordValue === "") {
     setError(signInPassword, "*Password is required");
-  } else {
-    setSuccess(signInPassword);
   }
 }
 
