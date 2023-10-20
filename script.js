@@ -125,11 +125,8 @@ function validateSignInInputs() {
       user.newUserEmail === signInEmailValue &&
       user.newUserPassword === signInPasswordValue
     ) {
-      // User with provided email and password found in local storage
       userExists = true;
       window.location.href = "./newsFeed/newsFeed.html";
-      // You can perform additional actions here, such as redirecting the user to another page
-      // or setting a flag to indicate successful login
     }
   });
 
@@ -140,7 +137,6 @@ function validateSignInInputs() {
     setError(signInPassword, "");
   } else {
     setSuccess(signInEmail);
-    // Perform actions for successful login, such as redirecting the user
   }
 
   if (signInEmailValue === "") {
@@ -188,3 +184,5 @@ function storeToLocalStorage(email, password) {
   console.log(userArray);
 }
 console.log(userArray);
+
+//1.delete value of input when changing pages

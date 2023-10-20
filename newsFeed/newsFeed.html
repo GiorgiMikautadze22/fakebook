@@ -30,12 +30,20 @@
             alt=""
           />
         </button>
-        <button class="profile-photo">
+
+        <label for="upload-profile-pic">
           <img
             src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
             alt=""
+            id="profile-pic"
+            class="profile-pic"
           />
-        </button>
+        </label>
+        <input
+          type="file"
+          id="upload-profile-pic"
+          accept="image/jpeg, image/png, image/jpg"
+        />
       </div>
     </header>
     <div class="container">
@@ -43,14 +51,26 @@
       <div class="hero">
         <div class="upload-post">
           <div class="input">
-            <button class="profile-photo">
-              <img
-                src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
-                alt=""
-              />
-            </button>
-            <input placeholder="What's on your mind?" type="text" />
+            <img
+              src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
+              alt=""
+              class="profile-pic"
+              id="post-profile-pic"
+            />
+
+            <input
+              class="create-post"
+              type="submit"
+              value="What's on your mind?"
+              onclick="onShow()"
+            />
           </div>
+          <textarea
+            type="text"
+            placeholder="Write..."
+            class="hide onShow"
+            id="text-area"
+          ></textarea>
           <div class="line"></div>
           <div class="upload">
             <button class="upload-content">
@@ -58,11 +78,20 @@
                 src="https://cdn-icons-png.flaticon.com/512/7729/7729432.png"
                 alt=""
               />
-              <p>Photo/Video</p>
+              <label for="input-file">Photo/Video</label>
+              <input
+                type="file"
+                accept="image/jpeg, image/png, image/jpg"
+                id="input-file"
+                class="input"
+              />
             </button>
+            <button class="post-btn hide">Post</button>
           </div>
         </div>
+        <div id="content"></div>
       </div>
+
       <div class="contacts"></div>
     </div>
 

@@ -64,9 +64,12 @@ input:focus {
   border-bottom: 3px solid rgb(28, 100, 214);
 }
 
+.home:hover {
+  opacity: 0.5;
+}
+
 .home img {
   width: 38px;
-  background-color: b;
 }
 
 .create img {
@@ -104,20 +107,31 @@ input:focus {
   background-color: rgb(207, 205, 205);
   border: none;
 }
-.profile-photo:hover {
-  background-color: rgb(187, 186, 186);
-}
 
-.profile-photo img {
-  width: 30px;
-  height: 30px;
-}
-
-.container .hero {
+.profile-pic {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgb(207, 205, 205);
+  border: none;
+}
+.profile-pic:hover {
+  opacity: 0.5;
+}
+
+#upload-profile-pic {
+  display: none;
+}
+
+.container .hero {
+  display: grid;
+  justify-content: center;
+  align-items: center;
   margin-top: 30px;
+  gap: 30px;
 }
 
 .upload-post {
@@ -172,9 +186,10 @@ input:hover {
 .upload {
   display: flex;
   justify-content: center;
+  gap: 10px;
 }
 
-.upload-content p {
+.upload-content label {
   font-size: 18px;
   color: gray;
 }
@@ -182,4 +197,92 @@ input:hover {
 .upload-content img {
   width: 40px;
   height: 40px;
+}
+
+.upload-content input {
+  display: none;
+}
+
+.profile-photo input {
+  display: none;
+}
+
+.create-post {
+  color: gray;
+  font-size: 15px;
+  display: flex;
+}
+
+.upload-post .onShow {
+  margin-top: 30px;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  resize: none;
+  padding-left: 10px;
+}
+
+.upload-post .hide {
+  display: none;
+}
+
+.upload .post-btn {
+  width: 50%;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(93, 185, 247);
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.upload .post-btn:hover {
+  opacity: 0.5;
+  transition: 150ms;
+}
+
+.post {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.post-profileImage {
+  width: 35px;
+  height: 35px;
+  background-color: rgb(207, 205, 205);
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.delete-post {
+  width: 35px;
+}
+
+.post-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-profile-details {
+  display: flex;
+  gap: 10px;
+}
+
+.post-name {
+  font-size: 15px;
+}
+
+.post-time {
+  color: gray;
+  font-size: 13px;
+}
+
+.post-text {
+  margin-top: 30px;
+  font-size: 15px;
 }
